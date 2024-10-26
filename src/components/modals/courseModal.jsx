@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
     Dialog,
     DialogContent,
@@ -7,27 +7,20 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-} from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
     Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@/components/ui/select"
-
-
-
-
-
+} from "@/components/ui/select";
 
 function CourseModel() {
-
     return (
         <div>
-          
             <Dialog>
                 <DialogTrigger asChild>
                     <Button variant="outline">Add Course</Button>
@@ -35,13 +28,14 @@ function CourseModel() {
                 <DialogContent className="sm:max-w-[425px]">
                     <DialogHeader>
                         <DialogTitle>Add Course</DialogTitle>
-                        {/* <DialogDescription></DialogDescription> */}
+                        <DialogDescription>
+                            Add Courses Here {/* Single quote is replaced by &apos; */}
+                        </DialogDescription>
                     </DialogHeader>
                     <div className="grid gap-4 py-4">
                         <div className="grid grid-cols-4 items-center gap-4">
-                            <Label htmlFor="name" className="text-right" >
-
-                                 Name 
+                            <Label htmlFor="name" className="text-right">
+                                Name
                             </Label>
                             <Input
                                 id="courseName"
@@ -50,13 +44,12 @@ function CourseModel() {
                             />
                         </div>
                         <div className="grid grid-cols-4 items-center gap-4">
-                            <Label htmlFor="duration" className="text-right" >
-
-                                 Duration 
+                            <Label htmlFor="duration" className="text-right">
+                                Duration
                             </Label>
                             <Input
                                 id="Duration"
-                                placeholder=" Course Duration"
+                                placeholder="Course Duration"
                                 className="col-span-3"
                             />
                         </div>
@@ -64,44 +57,34 @@ function CourseModel() {
                             <Label htmlFor="username" className="text-right">
                                 Status
                             </Label>
-                        
                             <Select>
                                 <SelectTrigger className="w-full col-span-3">
                                     <SelectValue placeholder="Status" />
                                 </SelectTrigger>
                                 <SelectContent>
-                                  
                                     <SelectItem value="Active">Active</SelectItem>
-                                    <SelectItem value="Not-Active">Not-Active</SelectItem>
-                               
+                                    <SelectItem value="Not-Active">Not Active</SelectItem>
                                 </SelectContent>
                             </Select>
-
                         </div>
                         <div className="grid grid-cols-4 items-center gap-4">
-                            <Label htmlFor="Discription" className="text-right" >
-
-                            Discription 
+                            <Label htmlFor="Description" className="text-right">
+                                Description
                             </Label>
                             <Input
-                                id="Discription"
-                                placeholder=" Course Discription"
+                                id="Description"
+                                placeholder="Course Description"
                                 className="col-span-3"
                             />
-                            
                         </div>
-                    
-
                     </div>
                     <DialogFooter>
-                        <Button type="submit">Add Course </Button>
+                        <Button type="submit">Add Course</Button>
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
-
-
-
         </div>
-    )
+    );
 }
-export default CourseModel
+
+export default CourseModel;
