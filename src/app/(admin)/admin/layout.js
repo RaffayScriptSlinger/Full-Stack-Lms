@@ -1,13 +1,12 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Link from "next/link"
 
-
-
 export default function adminLayout({ children }) {
     return (
         <div>
             <Tabs defaultValue="account" className="w-full">
                 <TabsList className="w-full">
+                    
                     <Link href={`/admin/teachers`}>
                         <TabsTrigger value="teachers">Teacher</TabsTrigger>
                     </Link>
@@ -39,3 +38,7 @@ export default function adminLayout({ children }) {
         </div>
     )
 }
+
+
+
+

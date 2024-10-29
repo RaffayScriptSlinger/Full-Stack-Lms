@@ -35,24 +35,30 @@ import {
 const data = [
     {
         id: "s1",
-        name: "John Doe",
-        status: "Active",
-        subject: "Ui Ux Design",
-        grade: "A"
+        firstName: "John",
+        lastName: "Doe",
+        education: "Bachelor's in Design",
+        cnic: "12345-6789012-3",
+        email: "john.doe@example.com",
+        gender: "Male"
     },
     {
         id: "s2",
-        name: "Jane Smith",
-        status: "Inactive",
-        subject: "Full Stack Development",
-        grade: "B"
+        firstName: "Jane",
+        lastName: "Smith",
+        education: "Master's in Development",
+        cnic: "23456-7890123-4",
+        email: "jane.smith@example.com",
+        gender: "Female"
     },
     {
         id: "s3",
-        name: "Emily Johnson",
-        status: "Active",
-        subject: "Computer Fundamentals",
-        grade: "A"
+        firstName: "Emily",
+        lastName: "Johnson",
+        education: "Bachelor's in Computer Science",
+        cnic: "34567-8901234-5",
+        email: "emily.johnson@example.com",
+        gender: "Female"
     }
 ];
 
@@ -80,39 +86,42 @@ export const columns = [
         enableHiding: false
     },
     {
-        accessorKey: "name",
-        header: ({ column }) => {
-            return (
-                <Button
-                    variant="ghost"
-                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                >
-                    Name
-                    <ArrowUpDown className="ml-2 h-4 w-4" />
-                </Button>
-            );
-        },
-        cell: ({ row }) => <div className="">{row.getValue("name")}</div>
+        accessorKey: "firstName",
+        header: ({ column }) => (
+            <Button
+                variant="ghost"
+                onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+            >
+                First Name
+                <ArrowUpDown className="ml-2 h-4 w-4" />
+            </Button>
+        ),
+        cell: ({ row }) => <div>{row.getValue("firstName")}</div>
     },
     {
-        accessorKey: "status",
-        header: "Status",
-        cell: ({ row }) => (
-            <div className="capitalize">{row.getValue("status")}</div>
-        )
+        accessorKey: "lastName",
+        header: () => <div>Last Name</div>,
+        cell: ({ row }) => <div>{row.getValue("lastName")}</div>
     },
     {
-        accessorKey: "subject",
-        header: "Subject",
-        cell: ({ row }) => <div className="">{row.getValue("subject")}</div>
+        accessorKey: "education",
+        header: () => <div>Education</div>,
+        cell: ({ row }) => <div>{row.getValue("education")}</div>
     },
     {
-        accessorKey: "grade",
-        header: () => <div className="text-right">Grade</div>,
-        cell: ({ row }) => {
-            const grade = row.getValue("grade");
-            return <div className="text-right font-medium">{grade}</div>;
-        }
+        accessorKey: "cnic",
+        header: () => <div>CNIC</div>,
+        cell: ({ row }) => <div>{row.getValue("cnic")}</div>
+    },
+    {
+        accessorKey: "email",
+        header: () => <div>Email</div>,
+        cell: ({ row }) => <div>{row.getValue("email")}</div>
+    },
+    {
+        accessorKey: "gender",
+        header: () => <div>Gender</div>,
+        cell: ({ row }) => <div>{row.getValue("gender")}</div>
     },
     {
         id: "actions",
@@ -175,9 +184,9 @@ export function StudentTable() {
             <div className="flex items-center py-4">
                 <Input
                     placeholder="Filter student..."
-                    value={table.getColumn("name")?.getFilterValue() ?? ""}
+                    value={table.getColumn("firstName")?.getFilterValue() ?? ""}
                     onChange={event =>
-                        table.getColumn("name")?.setFilterValue(event.target.value)
+                        table.getColumn("firstName")?.setFilterValue(event.target.value)
                     }
                     className="max-w-sm"
                 />
@@ -211,18 +220,16 @@ export function StudentTable() {
                     <TableHeader>
                         {table.getHeaderGroups().map(headerGroup => (
                             <TableRow key={headerGroup.id}>
-                                {headerGroup.headers.map(header => {
-                                    return (
-                                        <TableHead key={header.id}>
-                                            {header.isPlaceholder
-                                                ? null
-                                                : flexRender(
-                                                    header.column.columnDef.header,
-                                                    header.getContext()
-                                                )}
-                                        </TableHead>
-                                    );
-                                })}
+                                {headerGroup.headers.map(header => (
+                                    <TableHead key={header.id}>
+                                        {header.isPlaceholder
+                                            ? null
+                                            : flexRender(
+                                                header.column.columnDef.header,
+                                                header.getContext()
+                                            )}
+                                    </TableHead>
+                                ))}
                             </TableRow>
                         ))}
                     </TableHeader>

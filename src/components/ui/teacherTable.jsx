@@ -35,24 +35,30 @@ import {
 const data = [
     {
         id: "t1",
-        name: "Alice Johnson",
-        status: "Active",
-        subject: "UI/UX Design",
-        experience: "5 years"
+        firstName: "Alice",
+        lastName: "Johnson",
+        education: "Masters in Design",
+        cnic: "12345-6789012-3",
+        email: "alice.johnson@example.com",
+        gender: "Female"
     },
     {
         id: "t2",
-        name: "Bob Smith",
-        status: "On Leave",
-        subject: "Full Stack Development",
-        experience: "3 years"
+        firstName: "Bob",
+        lastName: "Smith",
+        education: "Bachelors in Computer Science",
+        cnic: "23456-7890123-4",
+        email: "bob.smith@example.com",
+        gender: "Male"
     },
     {
         id: "t3",
-        name: "Charlie Brown",
-        status: "Retired",
-        subject: "Computer Fundamentals",
-        experience: "10 years"
+        firstName: "Charlie",
+        lastName: "Brown",
+        education: "PhD in Education",
+        cnic: "34567-8901234-5",
+        email: "charlie.brown@example.com",
+        gender: "Male"
     }
 ]
 
@@ -80,39 +86,44 @@ export const columns = [
         enableHiding: false
     },
     {
-        accessorKey: "name",
+        accessorKey: "firstName",
         header: ({ column }) => {
             return (
                 <Button
                     variant="ghost"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                 >
-                    Name
+                    First Name
                     <ArrowUpDown className="ml-2 h-4 w-4" />
                 </Button>
             )
         },
-        cell: ({ row }) => <div className="">{row.getValue("name")}</div>
+        cell: ({ row }) => <div className="">{row.getValue("firstName")}</div>
     },
     {
-        accessorKey: "status",
-        header: "Status",
-        cell: ({ row }) => (
-            <div className="capitalize">{row.getValue("status")}</div>
-        )
+        accessorKey: "lastName",
+        header: "Last Name",
+        cell: ({ row }) => <div className="">{row.getValue("lastName")}</div>
     },
     {
-        accessorKey: "subject",
-        header: "Subject",
-        cell: ({ row }) => <div className="">{row.getValue("subject")}</div>
+        accessorKey: "education",
+        header: "Education",
+        cell: ({ row }) => <div className="">{row.getValue("education")}</div>
     },
     {
-        accessorKey: "experience",
-        header: () => <div className="text-right">Experience</div>,
-        cell: ({ row }) => {
-            const experience = row.getValue("experience")
-            return <div className="text-right font-medium">{experience}</div>
-        }
+        accessorKey: "cnic",
+        header: "CNIC",
+        cell: ({ row }) => <div className="">{row.getValue("cnic")}</div>
+    },
+    {
+        accessorKey: "email",
+        header: "Email",
+        cell: ({ row }) => <div className="">{row.getValue("email")}</div>
+    },
+    {
+        accessorKey: "gender",
+        header: "Gender",
+        cell: ({ row }) => <div className="">{row.getValue("gender")}</div>
     },
     {
         id: "actions",
@@ -175,9 +186,9 @@ export function TeacherTable() {
             <div className="flex items-center py-4">
                 <Input
                     placeholder="Filter teacher..."
-                    value={table.getColumn("name")?.getFilterValue() ?? ""}
+                    value={table.getColumn("firstName")?.getFilterValue() ?? ""}
                     onChange={event =>
-                        table.getColumn("name")?.setFilterValue(event.target.value)
+                        table.getColumn("firstName")?.setFilterValue(event.target.value)
                     }
                     className="max-w-sm"
                 />
