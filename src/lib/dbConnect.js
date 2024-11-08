@@ -7,7 +7,7 @@ export async function  connectDB() {
         let connection
         if(connection?.connection?.readyState != 1){
             connection = await mongoose.connect(process.env.MONGODB_URL);
-            console.log("db Connect Hogaya");
+            console.log("''''''''''''''''''''''db Connect Hogaya'''''''''''''''''''''''''''''''''''");
         }   
     }
     catch (err){

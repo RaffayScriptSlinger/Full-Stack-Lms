@@ -3,6 +3,7 @@ import BatchModel from "@/components/modals/batchModel"
 
 
 export default function Batches() {
+  
     return (
         
         <div>
@@ -17,6 +18,7 @@ export default function Batches() {
             </div>
             {/* Yaha mene batch ka table dala han */}
             <BatchTable />
+
         </div>
 
     )
