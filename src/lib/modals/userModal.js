@@ -36,7 +36,7 @@ const userSchema = new Schema({
 });
 
 // Avoid recompiling the model if it's already registered
-const UserModel = mongoose.models.User || mongoose.model("User", userSchema);
+const UserModel = mongoose?.models?.User || mongoose?.model("User", userSchema);
 
 export default UserModel;  // Default export the model
 
